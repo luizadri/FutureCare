@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutureCare</title>
+    <link rel="stylesheet" href="{% static 'CSS/index.css' %}">
+    <link rel="icon" href="{% static 'images/FutureLogo.webp' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+    <script defer src="{% static 'JS/index.js' %}"></script>
+
+</head>
+
+<body class="bg-white">
+
+    <!-- TOAST -->
+
+    <div class="toast position-fixed" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header bg-black">
+            <img width="30rem" src="{% static 'images/FutureLogo.webp' %}" class="rounded me-2" alt="...">
+            <strong class="me-auto text-white  fw-bold">Welcome</strong>
+
+            <button type="button" class="btn-close bg-danger" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            <p class="fw-medium fst-italic"> Book an Appoinment </p>
+            <a class="text-danger fw-medium fst-italic" href="">Book Now...</a>
+        </div>
+    </div>
+
+
+
+    <!-- NAVBAR -->
+
+    <nav style="padding-left: 2rem;padding-right:2rem; border-bottom:2px solid black;"
+        class="navbar navbar-expand-lg bg-white navbar-light">
+        <div class="container-fluid ">
+            <!-- <a class="navbar-brand m-0" href="#"></a>
+            <a class="navbar-brand" href="./Dindex.html"></a> -->
+            <a class="navbar-brand body fw-bold fs-4 fst-italic text-black me-xxl-5 " href="#"><img width="80rem"
+                    src="{% static 'images/FutureLogo.webp' %}" alt="">FUTURE<span
+                    class="text-danger fs-5 fw-medium fst-italic">CARE</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link active  fst-italic fw-bold fs-5 px-3" aria-current="page"
+                            href="{% url 'HomePage' %}">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link   fst-italic fw-bold fs-5 px-3" href="{% url 'LoginPage' %}">LOGIN</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fst-italic fw-bold fs-5 px-3" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            REGISTER
+                        </a>
+                        <ul class="dropdown-menu bg-white dropdown-menu-light ">
+
+                            <li><a class="dropdown-item fst-italic fw-bold fs-5 px-3  text-uppercase"
+                                    href="{% url 'RegisterDoctorPage' %}">DOCTOR</a>
+                            </li>
+                            <li><a class="dropdown-item fst-italic fw-bold fs-5 px-3  text-uppercase"
+                                    href="{% url 'RegisterPatientPage' %}">PATIENT</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link   fst-italic fw-bold fs-5 px-3" data-toggle="modal" data-target="#myModal"
+                            data-toggle="tooltip" href="">ACCOUNT</a>
+                    </li>
+
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <!-- CAROUSEL -->
+
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active caritem">
+                <img src="{% static 'images/bg.jpg' %}" class="caritem" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+
+                    <a class="text-decoration-none" href="">
+                        <h3 style="background-color: rgba(0, 0, 0, 0.662);" class="head0 text-uppercase text-black px-4 rounded-3">
+                            "Providing compassionate care, healing, and hope to our community."</h3>
+                    </a>
+
+
+                </div>
+            </div>
+            <div class="carousel-item caritem">
+                <img src="{% static 'images/bg1.jpg' %}" class="caritem" alt="...">
+                <div class="carousel-caption d-none d-sm-block">
+
+                    <a class="text-decoration-none" href="">
+                        <h3 style="background-color: rgba(0, 0, 0, 0.662);" class="head0 text-uppercase text-black px-4 rounded-3">
+                            "Providing compassionate care, healing, and hope to our community."</h3>
+                    </a>
+                </div>
+            </div>
+
+            <div class="carousel-item caritem">
+                <img src="{% static 'images/bg2.jpg' %}" class="caritem" alt="...">
+                <div class="carousel-caption d-none d-sm-block">
+
+                    <a class="text-decoration-none" href="">
+                        <h3 style="background-color: rgba(0, 0, 0, 0.662);" class="head0 text-uppercase text-black px-4 rounded-3">
+                            "Providing compassionate care, healing, and hope to our community."</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+    <!-- CATEGORIES of CLASSES -->
+
+
+
+    <!-- <h1 class="container-fluid bg-black head0 fst-italic fw-bold text-center ">
+        FutureCare</h1> -->
+
+
+    <!-- CARDS -->
+
+    <div class="container d-flex flex-wrap justify-content-center py-5">
+
+        <div class="card bg-white  my-3 pb-2 mx-3 image0" style="width: 21rem;">
+            <img src="{% static 'images/dept.jpg' %}" class="card-img-top img-thumbnail" alt="...">
+            <div class="card-body">
+                <h5 class="card-title fst-italic fw-bold text-black">Departments</h5>
+                <!-- <h6 class="fst-italic fw-medium text-danger">Looking for one-to-one classes?</h6> -->
+                <p class="card-text fst-italic fw-medium text-black">"Where Care Meets Compassion, Healing Begins."</p>
+                <a href="#" class="btn btn-outline-danger mt-3 fst-italic fw-medium">READ MORE <svg
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                        <path
+                            d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                    </svg></a>
+            </div>
+        </div>
+
+
+        <div class="card bg-white  my-3 pb-2 mx-3 image0" style="width: 21rem;">
+            <img src="{% static 'images/doct.jpg' %}" class="card-img-top img-thumbnail" alt="...">
+            <div class="card-body">
+                <h5 class="card-title fst-italic mt-3 fw-bold text-black">Doctors</h5>
+                <!-- <h6 class="fst-italic fw-medium text-danger">Need the classroom experience?</h6> -->
+                <p class="card-text fst-italic fw-medium text-black">"Expertise, Empathy, Excellence: Healing Hands,
+                    Caring Hearts."</p>
+                <a href="#" class="btn btn-outline-danger mt-3 fst-italic fw-medium">READ MORE <svg
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                        <path
+                            d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                    </svg></a>
+            </div>
+        </div>
+
+        <div class="card bg-white  my-3 pb-2 mx-3 image0" style="width: 21rem;">
+            <img src="{% static 'images/loc.jpg' %}" class="card-img-top img-thumbnail" alt="...">
+            <div class="card-body">
+                <h5 class="card-title fst-italic fw-bold text-black">Locations</h5>
+                <!-- <h6 class="fst-italic fw-medium text-danger">Are you left with any doubts?</h6> -->
+                <p class="card-text fst-italic fw-medium text-black">"Bringing Quality Care Closer: Your Trusted Health
+                    Partner Across Every Mile."</p>
+                <a href="#" class="btn btn-outline-danger fst-italic fw-medium">READ MORE <svg
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                        <path
+                            d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                    </svg></a>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div style="background-color: rgba(0, 0, 0, 0.671);" class="container rounded-3 py-5">
+        <div class="container">
+            <div class="container">
+
+
+                <h5 class=" fst-italic text-white">Welcome to FutureCare, where compassionate care and medical excellence converge
+                    to serve you and your
+                    loved ones. As a leading healthcare institution, we pride ourselves on our unwavering commitment to
+                    providing top-notch medical services across a spectrum of specialties. From our state-of-the-art
+                    facilities
+                    to our dedicated team of healthcare professionals, we strive to create a healing environment that
+                    prioritizes your well-being above all else. Whether you're seeking emergency care, specialized
+                    treatment, or
+                    preventive services, you can trust in our expertise and dedication to guide you on your journey to
+                    optimal
+                    health. At FutureCare, we're not just here to treat illnesses; we're here to empower and support you
+                    every step of the way. Welcome to a place where healing begins and hope thrives.</h5>
+            </div>
+        </div>
+    </div>
+
+<br><br>
+
+
+
+
+
+
+
+
+    <!-- FOOTER -->
+
+
+
+    <footer>
+        <div style="background-color: rgba(0, 0, 0, 0.93);"
+            class="container-fluid py-4 mt-2 border-top border-black border-3">
+            <div class="container footer">
+                <div class="row">
+
+                    <div class="col-12 col-md-3 my-2">
+                        <!-- <h5 class=" fw-bold mb-3">About Us</h5> -->
+                        <br>
+                        <a class=" fw-medium text-danger fs-6 text-decoration-none" href="">"Empowering Health,
+                            Embracing Healing: Where Compassionate Care Meets Trusted Expertise, Your Wellness is Our
+                            Priority"</a><br><br>
+                        <a class=" fw-medium text-decoration-none" href=""><svg xmlns="http://www.w3.org/2000/svg"
+                                width="16" height="16" fill="currentColor" class="bi bi-telephone-fill"
+                                viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                            </svg> +91 9311656688</a><br>
+                        <a class=" fw-medium text-decoration-none" href=""><svg xmlns="http://www.w3.org/2000/svg"
+                                width="16" height="16" fill="currentColor" class="bi bi-envelope-at-fill"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671" />
+                                <path
+                                    d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z" />
+                            </svg> futurecare@gmail.com</a><br><br>
+                        <!-- <a class=" fw-medium text-decoration-none" href="">We Respect Your Privacy</a><br> -->
+                        <!-- <a class="text-black fw-medium text-decoration-none" href="">Fee & Payments</a><br>
+                        <a class="text-black fw-medium text-decoration-none" href="">Returns & Refunds Policy</a><br>
+                        <a class="text-black fw-medium text-decoration-none" href="">Promotions Terms & Conditions</a><br> -->
+                    </div>
+
+                    <div class="col-12 col-md-3 my-2">
+                        <h5 class=" fw-bold mb-3">Links</h5>
+                        <a class=" fw-medium text-decoration-none" href="">Departments</a><br>
+                        <a class=" fw-medium text-decoration-none" href="">Doctors</a><br>
+                        <a class=" fw-medium text-decoration-none" href="">Patient Information</a><br>
+                        <a class=" fw-medium text-decoration-none" href="">Contact Us</a><br>
+                        <a class=" fw-medium text-decoration-none" href="">How To Register</a><br>
+                        <a class=" fw-medium text-decoration-none" href="">Forgot Password</a><br><br>
+
+
+
+                    </div>
+
+                    <div class="col-12 col-md-3 my-2">
+                        <h5 class=" fw-bold mb-3">Information</h5>
+                        <a class=" fw-medium text-decoration-none" href="">Hospital Hours</a><br>
+                        <a class=" fw-medium text-decoration-none" href="">Hospital Location</a><br>
+                        <a class=" fw-medium text-decoration-none" href="">FAQs</a><br>
+                        <a class=" fw-medium text-decoration-none" href="">Emergency Contact</a><br><br>
+
+                    </div>
+
+                    <div class="col-12 col-md-3 my-2">
+                        <h5 class=" fw-bold mb-3">Quick Links</h5>
+
+                        <a class=" fw-medium text-decoration-none" href="./Zabout.html">About US</a><br>
+                        <a class="fw-medium text-decoration-none" href="">Privacy Policy</a><br>
+                        <a class="fw-medium text-decoration-none" href="">Refund Policy</a><br>
+                        <a class="fw-medium text-decoration-none" href="">Terms & Conditions</a><br>
+                        <a class=" fw-medium text-decoration-none" href="">Disclaimer</a><br>
+                        <a class=" fw-medium text-decoration-none" href="">Sitemap</a><br>
+                        <a class=" fw-medium text-decoration-none" href="">Blogs</a><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONNECT -->
+
+        <div class="container-fluid bg-white" id="connect">
+            <div class="container d-flex d-inline justify-content-center py-3 pt-4">
+                <a class="text-decoration-none" href="./index.html"><img width="100rem;"
+                        src="{% static 'images/FutureLogo.webp' %}" alt="">
+                    <h4 class="fst-italic body  text-black fw-bold">FUTURE <span
+                            class="fst-italic body fs-5  text-danger fw-bold">CARE</span></h4>
+
+                </a>
+
+
+
+
+            </div>
+            <div class="container flex-wrap d-flex d-inline social justify-content-center pb-4 follow">
+
+                <a class="text-black" href="#" target="_blank" title="Follow us on Instagram"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-instagram mx-5 my-2" viewBox="0 0 16 16">
+                        <path
+                            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+                    </svg></a>
+                <a class="text-black" href="#" target="_blank" title="Follow us on Twitter"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-twitter-x mx-5 my-2" viewBox="0 0 16 16">
+                        <path
+                            d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
+                    </svg></a>
+                <a class="text-black" href="#" target="_blank" title="Follow us on Twitter"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                        class="bi bi-youtube mx-5 my-2" viewBox="0 0 16 16">
+                        <path
+                            d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" />
+                    </svg></a>
+                <a class="text-black" href="#" target="_blank" title="Follow us on Twitter"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor"
+                        class="bi bi-facebook mx-5 my-2" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
+                    </svg></a>
+                <!-- <h5 class="# mt-4">#KeralaTourism is Live & Trending. Don't forget to
+                    follow & share your Kerala experience.</h5> -->
+
+                <br>
+                <br>
+
+            </div>
+
+
+        </div>
+    </footer>
+
+
+
+    <!-- MODAL -->
+
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- the modal header -->
+                <div class="modal-header bg-white ">
+                    <div class="container-fluid d-flex flex-wrap justify-content-center">
+                        <a class="text-decoration-none" href="./index.html">
+                            <h4 class="fst-italic body  text-black fw-bold">FUTURE <span
+                                    class="fst-italic body fs-5  text-danger fw-bold">CARE</span></h4>
+                        </a>
+                    </div>
+                    <button type="button" class="btn btn-close btn-danger bg-danger" data-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body bg-black ">
+
+                    <h3 class="fst-italic body text-center fw-medium text-white">Please LOGIN to Proceed </h3>
+
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer bg-white">
+
+                    <a href=""><button type="button"
+                            class="btn btn-outline-dark  fst-italic text-center fw-bold">REGISTER
+                        </button></a>
+
+                    <a href=""><button class="btn btn-outline-danger fst-italic text-center fw-bold ">LOGIN
+                        </button></a>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- POPOVER -->
+
+    <script>
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    </script>
+
+
+
+
+
+
+    <!-- MODAL JQ -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+
+
+
+</body>
+
+</html>

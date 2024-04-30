@@ -1,0 +1,64 @@
+{% extends "admin/AdminNav.html" %}
+{% block content %}
+{% load static %}
+
+
+<!-- TABLE -->
+<form action="" method='post' enctype="multipart/form-data">
+    {% csrf_token %}
+    <br><br><br><br>
+
+
+    <div class="container mb-3 mt-5">
+
+        <div class="row">
+            <div class="col-1 col-md-3"></div>
+
+            <div class="col-10 col-md-9">
+                <h1 class="text-center body">DOCTOR LEAVE REPORT</h1><br>
+
+                <div class="table-resposive mb-4 mx-3 rounded-2 bg-white"
+                    style=" min-height: 500px; max-height: 500px; overflow-y: auto;">
+
+                    <table class="table  table-striped table-hover table-bordered text-center">
+
+
+                        <tr>
+                            <th>NAME</th>
+                            <th>DATE</th>
+                            <th>STATUS</th>
+                        </tr>
+                        
+                        <tr>
+                            {% if leave.attendance %}
+                            <td>{{ leave.doctor_name.user_member.first_name }} {{ leave.doctor_name.user_member.last_name }}</td>
+                            <td>{{ leave.date }}</td>
+                            <td>{{ leave.attendance }}</td>
+                            {% else %}
+                            <td>{{doct.user_member.first_name}} {{doct.user_member.last_name}}</td>
+                            <td>{{date}}</td>
+                            <td>ON DUTY</td>
+                            {% endif %}
+                        </tr>
+           
+
+                    </table>
+
+
+
+                </div>
+
+
+            </div>
+
+            <div class="col-1 col-md-3"></div>
+
+        </div>
+
+    </div>
+
+</form>
+
+<br>
+
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends "admin/AdminNav.html" %}
+{% block content %}
+{% load static %}
+
+
+<form action="" method='post' enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="container mb-3 mt-5">
+
+        <div class="row">
+            <div class="col-1 col-md-3"></div>
+
+            <div class="col-10 col-md-9">
+                <br>
+                <h1 class="text-center body">ZEPHYRUS</h1>
+                <br>
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+
+                        <center>
+                            <div class=" my-3 mx-3">
+                                <img width="50px" src="{% static 'images/students.png' %}" class="mx-auto my-3" alt="...">
+                                <div class="">
+                                    <h5 class=" text-black fst-italic body">DEPARTMENTS</h5>
+                                    <h5 class=" text-black fst-italic body">{{Scount}}</h5>
+                                    <a href="{% url 'manage_department' %}" class="btn btn-outline-success fst-italic fw-bold  px-3">VIEW <svg
+                                            xmlns="http://www.w3.org/2000/svg" width="16" height="18" fill="currentColor"
+                                            class="bi bi-caret-right-fill mx-1" viewBox="0 0 16 16">
+                                            <path
+                                                d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                        </svg></a>
+                                </div>
+                            </div>
+                        </center>
+
+                    </div>
+
+                    <div class="col-lg-6">
+                        
+                        <center>
+                            <div class=" my-3 mx-3">
+                                <img width="50px" src="{% static 'images/teachers.png' %}" class="mx-auto my-3" alt="...">
+                                <div class="">
+                                    <h5 class=" text-black fst-italic body">DOCTORS</h5>
+                                    <h5 class=" text-black fst-italic body">{{Tcount}}</h5>
+                                    <a href="{% url 'doctor_details' %}" class="btn btn-outline-success fst-italic fw-bold  px-3">VIEW <svg
+                                            xmlns="http://www.w3.org/2000/svg" width="16" height="18" fill="currentColor"
+                                            class="bi bi-caret-right-fill mx-1" viewBox="0 0 16 16">
+                                            <path
+                                                d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                        </svg></a>
+                                </div>
+                            </div>
+                        </center>
+
+                    </div>
+
+
+                </div>
+
+                <br>
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+
+                        <center>
+                            <div class=" my-3 mx-3">
+                                <img width="50px" src="{% static 'images/courses.png' %}" class="mx-auto my-3" alt="...">
+                                <div class="">
+                                    <h5 class=" text-black fst-italic body">PATIENTS</h5>
+                                    <h5 class=" text-black fst-italic body">{{Ccount}}</h5>
+                                    <a href="{% url 'patient_details' %}" class="btn btn-outline-success fst-italic fw-bold  px-3">VIEW <svg
+                                            xmlns="http://www.w3.org/2000/svg" width="16" height="18" fill="currentColor"
+                                            class="bi bi-caret-right-fill mx-1" viewBox="0 0 16 16">
+                                            <path
+                                                d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                        </svg></a>
+                                </div>
+                            </div>
+                        </center>
+
+                    </div>
+
+                    <div class="col-lg-6">
+                        
+                        <center>
+                            <div class=" my-3 mx-3">
+                                <img width="50px" src="{% static 'images/notifications.png' %}" class="mx-auto my-3" alt="...">
+                                <div class="">
+                                    <h5 class=" text-black fst-italic body">NOTIFICATIONS</h5>
+                                    <h5 class=" text-black fst-italic body">{{ pending_count }}</h5>
+                                    <a href="{% url 'approve_disapprove_users' %}" class="btn btn-outline-success fst-italic fw-bold  px-3">VIEW <svg
+                                            xmlns="http://www.w3.org/2000/svg" width="16" height="18" fill="currentColor"
+                                            class="bi bi-caret-right-fill mx-1" viewBox="0 0 16 16">
+                                            <path
+                                                d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                        </svg></a>
+                                </div>
+                            </div>
+                        </center>
+
+                    </div>
+
+
+                </div>
+                
+
+
+            </div>
+
+            <div class="col-1 col-md-3"></div>
+
+        </div>
+
+    </div>
+
+</form>
+
+<br>
+
+
+
+
+{% endblock %}

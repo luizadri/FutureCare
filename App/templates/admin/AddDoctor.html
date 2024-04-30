@@ -1,0 +1,299 @@
+{% extends "admin/AdminNav.html" %}
+{% block content %}
+{% load static %}
+
+
+<div class="container-fluid back1">
+
+
+    <div class=" formbg py-4">
+
+        <div class="row">
+
+            <div class="col-1 col-sm-3 col-lg-4"></div>
+
+            <div class="col-10 col-sm-6 col-lg-4 form1 pt-3">
+
+
+
+                <h3 class="head0 bg-black rounded-1 text-center  mx-4 fst-italic fw-bold mt-3 ">ADD DOCTOR
+                </h3><br>
+
+                <!-- <h2 class=" admin text-white text-uppercase fst-italic py-4  fw-bolder text-center">ADD CATEGORY
+                </h2> -->
+
+                <form action="{% url 'AddDoctor' %}" method="POST" enctype="multipart/form-data"
+                    onsubmit="return contact()">
+                    {% csrf_token %}
+
+                    <div class="mb-3 mx-4">
+                        <label for="" class="form-label float-start text-black fs-5 fst-italic fw-bold">First
+                            Name:</label>
+                        <input id="fname" style="text-transform: capitalize;" name="Fname" type="text"
+                            class="form-control text-black fs-5 fst-italic fw-medium"
+                            placeholder="Enter First Name">
+                        <span id="fnameError" class="error"></span>
+
+
+                    </div>
+
+                    <div class="mb-3 mx-4">
+                        <label for="" class="form-label float-start text-black fs-5 fst-italic fw-bold">Last
+                            Name:</label>
+                        <input id="lname" style="text-transform: capitalize;" name="Lname" type="text"
+                            class="form-control text-black fs-5 fst-italic fw-medium" placeholder="Enter Last Name">
+                        <span id="lnameError" class="error"></span>
+                    </div>
+
+                    <div class="mb-3 mx-4">
+                        <label for="" class="form-label float-start text-black fs-5 fst-italic fw-bold">Age:</label>
+                        <input id="age" name="Age" type="number"
+                            class="form-control text-black fs-5 fst-italic fw-medium" placeholder="Enter your Age">
+                        <span id="ageError" class="error"></span>
+
+
+                    </div>
+
+                    <div class="mb-3 mx-4">
+                        <label for=""
+                            class="form-label float-start text-black fs-5 fst-italic fw-bold mb-2">Gender:</label>
+                        <center>
+                            <div class="container d-flex flex-wrap justify-content-center">
+                                <div class="d-inline-flex mx-2">
+                                    <input class="form-check-input" type="radio" value="Male" name="Gender" id="M">
+                                    <label class="form-check-label text-black fs-5 fst-italic fw-medium "
+                                        for="flexRadioDefault1">
+                                        MALE
+                                    </label>
+                                </div>
+
+                                <div class="d-inline-flex mx-2">
+                                    <input class="form-check-input" value="Female" type="radio" name="Gender"
+                                        id="F">
+                                    <label class="form-check-label text-black fs-5 fst-italic fw-medium "
+                                        for="flexRadioDefault1">
+                                        FEMALE
+                                    </label>
+                                </div>
+
+                                <div class="d-inline-flex mx-2">
+                                    <input class="form-check-input" value="Other" type="radio" name="Gender" id="O">
+                                    <label class="form-check-label text-black fs-5 fst-italic fw-medium "
+                                        for="flexRadioDefault1">
+                                        OTHER
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <span id="genderError" class="error"></span>
+
+
+
+
+                        </center>
+
+
+
+                    </div>
+
+
+                    <div class="mb-3 mx-4">
+                        <label for="" class="form-label float-start text-black fs-5 fst-italic fw-bold">Email
+                            ID:</label>
+                        <input id="email" name="Email" type="text"
+                            class="form-control text-black fs-5 fst-italic fw-medium"
+                            placeholder="Enter your Email ID">
+                        <span id="emailError" class="error"></span>
+
+                    </div>
+
+                    <div class="mb-3 mx-4">
+                        <label for="" class="form-label float-start text-black fs-5 fst-italic fw-bold">Phone
+                            Number:</label>
+                        <input id="number" name="Phone" type="text"
+                            class="form-control text-black fs-5 fst-italic fw-medium"
+                            placeholder="Enter your Phone Number">
+                        <span id="numberError" class="error"></span>
+
+                    </div>
+
+
+                    <div class="mb-3 mx-4">
+                        <label for=""
+                            class="form-label float-start text-black fs-5 fst-italic fw-bold">Username:</label>
+                        <input id="username" name="Username" type="text"
+                            class="form-control text-black fs-5 fst-italic fw-medium"
+                            placeholder="Enter your Username">
+                        <span id="usernameError" class="error"></span>
+                    </div>
+
+                    <div class="mb-3 mx-4">
+                        <label for="" class="form-label float-start text-black fs-5 fst-italic fw-bold">Choose
+                            Department:</label>
+                        <select class="form-select fs-5 fst-italic" name="department" id="department">
+
+                            <option class="text-center text-secondary fs-5 fst-italic fw-medium" disabled selected
+                                value="">-- Choose a Department --</option>
+
+                            {% for d in departments %}
+                            <option class="text-center text-black fs-5 fst-italic fw-medium" value="{{d.id}}">
+                                {{d.department_name}}</option>
+                            {% endfor %}
+
+                        </select>
+
+                        <span id="departmentError" class="error"></span>
+
+                    </div>
+
+                    <div class="mb-3 mx-4">
+                        <label for="" class="form-label float-start text-black fs-5 fst-italic fw-bold">CV:</label>
+                        <input name="cv" type="file" accept=".pdf" id="cv"
+                            class="form-control text-black fs-5 fst-italic fw-medium" placeholder="">
+                        <span id="cvError" class="error"></span>
+
+                    </div>
+
+                    <div class="mb-4 mx-4">
+                        <label for=""
+                            class="form-label float-start text-black fs-5 fst-italic fw-bold">Photo:</label>
+                        <input name="Photo" type="file" accept="image/*" id="image"
+                            class="form-control text-black fs-5 fst-italic fw-medium" placeholder="">
+
+
+                    </div>
+
+
+
+
+                    <center>
+                        <button type="submit"
+                            class="btn btn-outline-dark f6-5 fst-italic px-3 me-2 mb-3 mt-1 fw-bold">REGISTER<svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="18" fill="currentColor"
+                                class="bi bi-plus-square mx-2 " viewBox="0 0 16 16">
+                                <path
+                                    d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                                <path
+                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                            </svg></button>
+                        <button type="reset"
+                            class="btn btn-outline-danger fs-6 fst-italic px-4 me-2  mb-3 mt-1 fw-bold">RESET</button>
+
+                        <div>
+                            <a class=" text-black text-decoration-none fs-6 fst-italic fw-bold " href="">Already
+                                have an Account ? >></a>
+                            <br><br>
+
+                        </div>
+                    </center>
+
+                </form>
+
+            </div>
+
+
+
+        </div>
+
+
+        <div class="col-1 col-sm-3 col-lg-4"></div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+
+
+<script>
+    function contact() {
+        var fname = document.getElementById('fname').value;
+        var lname = document.getElementById('lname').value;
+        var email = document.getElementById('email').value;
+        var number = document.getElementById('number').value;
+        var age = document.getElementById('age').value;
+        var genderRadios = document.getElementsByName('Gender');
+        var genderChecked = false;
+        var username = document.getElementById('username').value;
+        var department = document.getElementById('department').value;
+        var cvInput = document.getElementById('cv');
+
+        document.getElementById('fnameError').innerHTML = '';
+        document.getElementById('lnameError').innerHTML = '';
+        document.getElementById('emailError').innerHTML = '';
+        document.getElementById('numberError').innerHTML = '';
+        document.getElementById('ageError').innerHTML = '';
+        document.getElementById('genderError').innerHTML = '';
+        document.getElementById('usernameError').innerHTML = '';
+        document.getElementById('departmentError').innerHTML = '';
+        document.getElementById('cvError').innerHTML = '';
+
+        if (fname.trim() === '') {
+            document.getElementById('fnameError').innerHTML = 'First Name is required';
+            return false;
+        }
+
+        if (lname.trim() === '') {
+            document.getElementById('lnameError').innerHTML = 'Last Name is required';
+            return false;
+        }
+
+        if (age < 18 || age > 100) {
+            document.getElementById('ageError').innerHTML = 'You must be between 18 and 120';
+            return false;
+        }
+
+        for (var i = 0; i < genderRadios.length; i++) {
+            if (genderRadios[i].checked) {
+                genderChecked = true;
+                break;
+            }
+        }
+
+        if (!genderChecked) {
+            document.getElementById('genderError').innerHTML = 'Please select a gender';
+            return false;
+        }
+
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            document.getElementById('emailError').innerHTML = 'Enter a valid email address';
+            return false;
+        }
+
+        if (number.length !== 10) {
+            document.getElementById('numberError').innerHTML = 'Enter a valid Mobile number';
+            return false;
+        }
+
+        if (!isValidUsername(username)) {
+            document.getElementById('usernameError').innerHTML = 'Username must be between 3 and 20 characters and can only contain letters, numbers, and underscores';
+            return false;
+        }
+
+        if (department === '') {
+            document.getElementById('departmentError').innerHTML = 'Please choose a department';
+            return false;
+        }
+
+        if (cvInput.files.length === 0 || !isPDFFile(cvInput.files[0].name)) {
+            document.getElementById('cvError').innerHTML = 'Please select a PDF file';
+            return false;
+        }
+
+
+
+        return true;
+    }
+
+    function isValidUsername(username) {
+        var usernameRegex = /^[a-zA-Z0-9_]{3,20}$/;
+        return usernameRegex.test(username);
+    }
+</script>
+
+{% endblock %}

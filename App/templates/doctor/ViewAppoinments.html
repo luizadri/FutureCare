@@ -1,0 +1,90 @@
+{% extends "doctor/DoctorNav.html" %}
+{% block content %}
+{% load static %}
+
+<br>
+    <!-- TABLE -->
+
+    <div class="container mb-3 mt-5">
+
+        <div class="row">
+            <div class="col-1 col-md-3"></div>
+
+            <div class="col-10 col-md-9">
+
+                <h1 class="text-center body">NOTIFICATIONS</h1>
+                <br>
+
+                <div class="table-resposive mb-4 mx-3 rounded-2 bg-white"
+                    style=" min-height: 500px; max-height: 500px; overflow-y: auto;">
+
+                    <table class="table  table-striped table-hover table-bordered text-center">
+
+
+                        <tr>
+
+                            <th class="fst-italic text-center bg-white text-black fs-5">PATIENT ID</th>
+                            <th class="fst-italic text-center bg-white text-black fs-5">PATIENT NAME</th>
+                            <th class="fst-italic text-center bg-white text-black fs-5">DEPARTMENT</th>
+                            <th class="fst-italic text-center bg-white text-black fs-5">DOCTOR</th>
+                            <th class="fst-italic text-center bg-white text-black fs-5">DESCRIPTION</th>
+                            <th class="fst-italic text-center bg-white text-black fs-5">DATE</th>
+                            <th class="fst-italic text-center bg-white text-black fs-5">ACTION</th>
+                            <th class="fst-italic text-center bg-white text-black fs-5">STATUS</th>
+
+                        </tr>
+
+                        {% for i in PendingBooking %}
+                        <tr>
+                            <td>{{i.user_member.id}}</td>
+                            <td>{{ i.user_member.first_name }} {{ i.user_member.last_name }}</td>
+                            <td>{{ i.department.department_name }}</td>
+                            <td>{{ i.doctor.user_member.first_name }} {{ i.doctor.user_member.last_name }}</td>
+                            <td>{{i.description}}</td>
+                            <td>{{i.date}}</td>
+                            <td>
+                                <form class="text-center" method="POST" action="">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="appointment_id" value="{{i.id}}">
+                                    <button class="btn btn-outline-success my-2" type="submit" name="action" value="CONFIRM">CONFIRM</button>
+                                    <button class="btn btn-outline-danger px-3 my-2" type="submit" name="action" value="CANCEL">CANCEL</button>
+                                </form>
+                            </td>
+                            <td>{{ i.status }}</td>
+                        </tr>
+                        {% endfor %}
+                        {% for j in ApprovedBooking %}
+                        <tr>
+                            <td>{{j.user_member.id}}</td>
+                            <td>{{ j.user_member.first_name }} {{ j.user_member.last_name }}</td>
+                            <td>{{ j.department.department_name }}</td>
+                            <td>{{ j.doctor.user_member.first_name }} {{ j.doctor.user_member.last_name }}</td>
+                            <td>{{j.description}}</td>
+                            <td>{{j.date}}</td>
+                            <td></td>
+                            <td>{{ j.status }}</td>
+                        </tr>
+                        {% endfor %}
+                        <!-- <label for="">{% for i in messages %}{{i}}{% endfor %}</label> -->
+
+                    </table>
+
+
+
+                </div>
+
+
+            </div>
+
+            <div class="col-1 col-md-3"></div>
+
+        </div>
+
+    </div>
+
+    <br>
+
+
+
+
+{% endblock %}

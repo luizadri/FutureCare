@@ -1,0 +1,109 @@
+{% extends "admin/AdminNav.html" %}
+{% block content %}
+{% load static %}
+
+
+<br><br><br>
+    <!-- TABLE -->
+
+    <div class="container mb-3 mt-5">
+
+        <div class="row">
+            <div class="col-1 col-md-3"></div>
+
+            <div class="col-10 col-md-9">
+                
+                <h1 class="text-center body">PATIENTS RECORD</h1><br>
+
+                <div class="table-resposive mb-4 mx-3 rounded-2 bg-white"
+                    style=" min-height: 500px; max-height: 500px; overflow-y: auto;">
+
+                    <table class="table  table-striped table-hover table-bordered text-center">
+
+
+                        <tr>
+                            <th>USERNAME</th>
+                            <th>IMAGE</th>
+                            <th>NAME</th> 
+                            <th>EMAIL</th>
+                            <th>AGE</th>
+                            <th>CONTACT</th>
+                            <th>ACTION</th>
+                        </tr>
+                        {% for i in doct %}
+                            {% if i.user_member.user_type == '3' and i.user_member.is_active == 1 %}
+                                <tr>
+                                    <td>{{i.user_member.username}}</td>
+                                    <td><img style="aspect-ratio: 1/1;" width="125px" src="{{i.image.url}}" alt=""></td>
+                                    <td>{{i.user_member.first_name}} {{i.user_member.last_name}}</td>
+                                    <td>{{i.user_member.email}}</td>
+                                    <td>{{i.age}}</td>
+                                    <td>{{i.number}}</td>
+                                    <td><a class="btn btn-outline-danger" href="" data-toggle="modal"
+                                        data-target="#myModal{{ i.id }}" data-toggle="tooltip">DELETE</a></td>
+
+                                    <!-- MODAL -->
+
+                                <div class="modal" id="myModal{{ i.id }}">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <!-- the modal header -->
+                                            <div class="modal-header bg-black ">
+                                                <div class="container-fluid d-flex flex-wrap justify-content-center">
+                                                    <!-- <img width="80rem" class="img-fluid mx-2" src="./images/logo.gif" alt=""> -->
+                                                    <h4 class="modal-title admin text-danger fw-bold fst-italic ">DELETE
+                                                    </h4>
+                                                </div>
+                                                <button type="button" class="btn btn-close btn-danger bg-danger"
+                                                    data-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <!-- Modal body -->
+                                            <div class="modal-body bg-white ">
+
+                                                <h3 class="fst-italic text-center fw-medium text-black">Are you sure you
+                                                    want
+                                                    to
+                                                    Delete {{i.user_member.username}} ?</h3>
+
+                                            </div>
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer bg-black">
+
+                                                <a href=""><button type="button"
+                                                        class="btn btn-outline-light  fst-italic text-center fw-bold"
+                                                        data-dismiss="modal">CANCEL
+                                                    </button></a>
+
+                                                <a href="{% url 'delete_pat' i.id %}"><button
+                                                        class="btn btn-outline-danger fst-italic text-center fw-bold ">CONFIRM
+                                                    </button></a>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </table>
+
+
+
+                </div>
+
+
+            </div>
+
+            <div class="col-1 col-md-3"></div>
+
+        </div>
+
+    </div>
+
+    <br>
+
+
+
+{% endblock %}

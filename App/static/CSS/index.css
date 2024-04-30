@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+
+
+.caritem {
+
+    width: 100%;
+    
+}
+.body {
+    font-family: 'Protest Guerrilla', sans-serif;
+}
+
+.head0 {
+
+    font-family: 'Bungee Spice', sans-serif;
+
+}
+.footer h5 {
+    font-size: medium;
+    color: white;
+}
+
+.footer a {
+    font-size: small;
+    color: white;
+}
+
+.follow a {
+    transition: all 1s;
+}
+
+.follow a:hover {
+    transform: scale(1.5);
+
+}
+
+.toast {
+    bottom: 25px;
+    right: 15px;
+    z-index: 9999;
+
+}
+
+.form1 {
+    font-family: 'Single Day', cursive;
+
+    background-color: rgba(255, 255, 255, 0.555);
+    border-radius: 10px;
+
+
+}
+
+.error{
+    color: red;
+}

@@ -1,0 +1,126 @@
+{% extends "doctor/DoctorNav.html" %}
+{% block content %}
+{% load static %}
+
+<!-- TABLE -->
+<form action="{% url 'update_doctor_profile' %}" method='post' enctype="multipart/form-data" onsubmit="return contact()">
+    {% csrf_token %}
+    <br>
+
+
+    <div class="container mb-3 mt-5">
+
+        <div class="row">
+            <div class="col-1 col-md-4"></div>
+
+            <div class="col-10 col-md-6">
+                <h1 class="text-center body">UPDATE PROFILE</h1>
+
+                <br>
+
+                <label for="task_name">First Name:</label>
+                <input id="fname" style="text-transform: capitalize;" class="form-control" type="text"
+                    placeholder="Enter Your First Name" value="{{usr.user_member.first_name}}" name="fname">
+                <span id="fnameError" class="error"></span><br>
+
+                <label for="task_name">Last Name:</label>
+                <input id="lname" style="text-transform: capitalize;" class="form-control" type="text"
+                    placeholder="Enter Your Last Name" value="{{usr.user_member.last_name}}" name="lname">
+                <span id="lnameError" class="error"></span><br>
+
+                <label for="task_name">Age:</label>
+                <input id="age" class="form-control" type="number" placeholder="Enter Your Age" value="{{usr.age}}"
+                    name="age">
+                <span id="ageError" class="error"></span><br>
+
+                <label for="task_name">Email ID:</label>
+                <input id="email" class="form-control" type="text" placeholder="Enter Your Email ID"
+                    value="{{usr.user_member.email}}" name="mail">
+                <span id="emailError" class="error"></span><br>
+
+                <label for="task_name">Contact Number:</label>
+                <input id="number" class="form-control" type="text" placeholder="Enter Your Phone Number"
+                    value="{{usr.number}}" name="num">
+                <span id="numberError" class="error"></span><br>
+
+                <center>
+                    <img style="aspect-ratio: 1/1;" width="125px" height="125px" src="{{usr.image.url}}"
+                        alt="Profile Image"><br><br>
+                    <input style="border: 2px solid black;" class="form-check-input" name="remove" type="checkbox"
+                        value="True" id="defaultCheck1">
+                    <label class="form-check-label text-black fs-5 fst-italic fw-medium" for="defaultCheck1">
+                        Remove Photo
+                    </label>
+                </center>
+
+                <label for="task_name">Image:</label>
+                <input class="form-control" type="file" accept="image/*" name="img">
+
+
+
+                <center>
+                    <button class="btn btn-outline-success mt-4 my-3" type="submit">UPDATE</button>
+                </center>
+
+
+            </div>
+
+            <div class="col-1 col-md-3"></div>
+
+        </div>
+
+    </div>
+
+</form>
+
+<br>
+
+<script>
+    function contact() {
+        var fname = document.getElementById('fname').value;
+        var lname = document.getElementById('lname').value;
+        var email = document.getElementById('email').value;
+        var number = document.getElementById('number').value;
+        var age = document.getElementById('age').value;
+    
+        document.getElementById('fnameError').innerHTML = '';
+        document.getElementById('lnameError').innerHTML = '';
+        document.getElementById('emailError').innerHTML = '';
+        document.getElementById('numberError').innerHTML = '';
+        document.getElementById('ageError').innerHTML = '';
+
+        if (fname.trim() === '') {
+            document.getElementById('fnameError').innerHTML = 'First Name is required';
+            return false;
+        }
+
+        if (lname.trim() === '') {
+            document.getElementById('lnameError').innerHTML = 'Last Name is required';
+            return false;
+        }
+
+        if (age < 18 || age > 120) {
+            document.getElementById('ageError').innerHTML = 'You must be between 18 and 120';
+            return false;
+        }
+
+
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            document.getElementById('emailError').innerHTML = 'Enter a valid email address';
+            return false;
+        }
+
+        if (number.length !== 10) {
+            document.getElementById('numberError').innerHTML = 'Enter a valid Mobile number';
+            return false;
+        }
+
+
+        return true;
+    }
+
+</script>
+
+
+{% endblock %}

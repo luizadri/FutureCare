@@ -1,0 +1,64 @@
+{% extends "doctor/DoctorNav.html" %}
+{% block content %}
+{% load static %}
+
+<br>
+    <!-- TABLE -->
+
+    <div class="container mb-3 mt-5">
+
+        <div class="row">
+            <div class="col-1 col-md-3"></div>
+
+            <div class="col-10 col-md-9">
+
+                <h1 class="text-center body">NOTIFICATIONS</h1>
+                <br>
+
+                <div class="table-resposive mb-4 mx-3 rounded-2 bg-white"
+                    style=" min-height: 500px; max-height: 500px; overflow-y: auto;">
+
+                    <table class="table  table-striped table-hover table-bordered text-center">
+
+
+                        <tr>
+
+                            <th class="fst-italic text-center bg-white text-black fs-5">MESSAGE</th>
+                            <th class="fst-italic text-center bg-white text-black fs-5">ACTION</th>
+
+                        </tr>
+
+                        {% for i in PendingNotification %}
+                        <tr>
+                            <td>You Have a New Appoinment, Please Check Your Appoinments</td>
+                            <td>
+                                <form class="text-center" method="POST" action="">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="user_id" value="{{i.user_member.id}}">
+                                    <input type="hidden" name="appointment_id" value="{{i.id}}">
+                                    <button class="btn btn-outline-success my-2" type="submit" name="action" value="READ">MARK AS READ</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+
+
+
+                </div>
+
+
+            </div>
+
+            <div class="col-1 col-md-3"></div>
+
+        </div>
+
+    </div>
+
+    <br>
+
+
+
+
+{% endblock %}
